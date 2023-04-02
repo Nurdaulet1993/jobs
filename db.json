@@ -15,7 +15,7 @@
       "job_title": "Data analitic",
       "job_start_date": "2023-04-14",
       "job_close_date": "2023-04-14",
-      "experience_required": true,
+      "experience_required": false,
       "number_of_openings": "45",
       "job_notes": "Data analisys",
       "id": 2
@@ -43,8 +43,8 @@
     {
       "job_number": "545-AKJ",
       "job_title": "UI designer",
-      "job_start_date": "12-10-23",
-      "job_close_date": "12-10-23",
+      "job_start_date": "2023-12-10",
+      "job_close_date": "2023-12-10",
       "experience_required": false,
       "number_of_openings": 44,
       "job_notes": "Hello world",
