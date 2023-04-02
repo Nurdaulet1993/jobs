@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import {IJob, Job} from "../job.model";
+import { IJob, Job } from "../job.model";
 import { Store } from "@ngrx/store";
 import { State } from "../state";
 import { updateJob } from "../state/actions/jobs-actions";
@@ -40,7 +40,7 @@ export class JobEditComponent implements OnInit {
 
     this.store.dispatch(updateJob({
       id: this.job.id,
-      props: value
+      props: Job.formatToApiData(value)
     }))
   }
 }

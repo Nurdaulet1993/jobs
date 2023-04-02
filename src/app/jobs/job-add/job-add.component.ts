@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { JobFormComponent } from "../components/job-form/job-form.component";
 import { Store } from "@ngrx/store";
 import { State } from "../state";
-import { IJob } from "../job.model";
+import {IJob, Job} from "../job.model";
 import { createJob } from "../state/actions/jobs-actions";
 
 @Component({
@@ -23,6 +23,7 @@ export class JobAddComponent implements OnInit {
   }
 
   onSubmit(value: Omit<IJob, 'id'>): void {
-    this.store.dispatch(createJob({ props: value }))
+
+    this.store.dispatch(createJob({ props: Job.formatToApiData(value) }))
   }
 }

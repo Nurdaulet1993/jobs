@@ -22,11 +22,19 @@ export class Job {
     this.props = {
       ...props,
       job_start_date: moment(props.job_start_date).format('yyyy-MM-DD'),
-      job_close_date: moment(new Date(props.job_close_date)).format('yyyy-MM-DD'),
+      job_close_date: moment(props.job_close_date).format('yyyy-MM-DD'),
     }
   }
 
   get id(): number {
     return this.props.id;
+  }
+
+  static formatToApiData(value: Omit<IJob, 'id'>): Omit<IJob, 'id'> {
+    return {
+      ...value,
+      job_start_date: moment(value.job_start_date).format('yyyy-MM-DD'),
+      job_close_date: moment(value.job_close_date).format('yyyy-MM-DD'),
+    }
   }
 }
