@@ -2,18 +2,38 @@
   <div class="mb-3">
     <label for="job_number" class="form-label">Number</label>
     <input type="text" class="form-control" id="job_number" formControlName="job_number">
+    <ng-container *ngIf="form.controls.job_number as jobNumber">
+      <div class="invalid-feedback d-block" *ngIf="jobNumber.dirty && jobNumber.hasError('required')">
+        Required field
+      </div>
+    </ng-container>
   </div>
   <div class="mb-3">
     <label for="job_title" class="form-label">Title</label>
     <input type="text" class="form-control" id="job_title" formControlName="job_title">
+    <ng-container *ngIf="form.controls.job_title as jobTitle">
+      <div class="invalid-feedback d-block" *ngIf="jobTitle.dirty && jobTitle.hasError('required')">
+        Required field
+      </div>
+    </ng-container>
   </div>
   <div class="mb-3">
     <label for="job_start_date" class="form-label">Start date</label>
     <input type="date" class="form-control" id="job_start_date" formControlName="job_start_date">
+    <ng-container *ngIf="form.controls.job_start_date as jobStartDate">
+      <div class="invalid-feedback d-block" *ngIf="jobStartDate.dirty && jobStartDate.hasError('required')">
+        Required field
+      </div>
+    </ng-container>
   </div>
   <div class="mb-3">
     <label for="job_close_date" class="form-label">Close date</label>
     <input type="date" class="form-control" id="job_close_date" formControlName="job_close_date">
+    <ng-container *ngIf="form.controls.job_close_date as jobClosetDate">
+      <div class="invalid-feedback d-block" *ngIf="jobClosetDate.dirty && jobClosetDate.hasError('required')">
+        Required field
+      </div>
+    </ng-container>
   </div>
   <div class="form-check mb-3">
     <label class="form-check-label" for="experience_required">
@@ -25,10 +45,15 @@
   <div class="mb-3">
     <label for="number_of_openings" class="form-label">Number of openings</label>
     <input type="number" class="form-control" id="number_of_openings" formControlName="number_of_openings">
+    <ng-container *ngIf="form.controls.number_of_openings as numberOfOpenings">
+      <div class="invalid-feedback d-block" *ngIf="numberOfOpenings.dirty && numberOfOpenings.hasError('required')">
+        Required field
+      </div>
+    </ng-container>
   </div>
   <div class="mb-3">
     <label for="job_notes" class="form-label">Notes</label>
     <textarea rows="4" type="text" class="form-control" id="job_notes" formControlName="job_notes"></textarea>
   </div>
-  <button class="btn btn-primary w-100">Save</button>
+  <button class="btn btn-primary w-100" [disabled]="form.invalid">Save</button>
 </form>

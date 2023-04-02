@@ -103,7 +103,7 @@ export class JobsEffects {
   deleteJobSuccess$ = createEffect(() => this.actions$.pipe(
     ofType(JobsApiActions.JobsApiActionsType.DELETE_JOB_SUCCESS),
     tap(() => {
-      this.toastService.success('Job creation successfully done!', undefined, {
+      this.toastService.success('Job deletion successfully done!', undefined, {
         positionClass: 'toast-bottom-left',
         easeTime: 500
       })

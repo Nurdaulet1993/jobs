@@ -2,7 +2,7 @@ import * as moment from "moment";
 
 export interface IJob {
   id: number;
-  job_number: string;
+  job_number: string | null;
   job_title: string;
   job_start_date: Date | string;
   job_close_date: Date | string;
