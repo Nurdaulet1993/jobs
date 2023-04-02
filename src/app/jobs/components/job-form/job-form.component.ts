@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IJob } from "../../job.model";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
+import * as moment from "moment";
 
 interface IJobForm {
   job_number: FormControl<string>;
   job_title: FormControl<string>;
-  job_start_date: FormControl<string>;
-  job_close_date: FormControl<string>;
+  job_start_date: FormControl<Date | string>;
+  job_close_date: FormControl<Date | string>;
   experience_required: FormControl<boolean>;
   number_of_openings: FormControl<number | null>;
   job_notes: FormControl<string>;
@@ -19,7 +20,11 @@ interface IJobForm {
 export class JobFormComponent {
   @Input() set job(value: Omit<IJob, "id"> | null) {
     if (!value) return;
-    this.form.setValue(value)
+    this.form.setValue({
+      ...value,
+      job_start_date: moment(value.job_start_date).format('yyyy-MM-DD'),
+      job_close_date: moment(value.job_close_date).format('yyyy-MM-DD'),
+    })
   }
   @Output() submit = new EventEmitter<Omit<IJob, "id">>()
 

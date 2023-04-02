@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { IJob } from "../job.model";
+import {IJob, Job} from "../job.model";
 import { Store } from "@ngrx/store";
 import { State } from "../state";
 import { updateJob } from "../state/actions/jobs-actions";
@@ -12,7 +12,7 @@ import { JobFormComponent } from "../components/job-form/job-form.component";
   styleUrls: ['./job-edit.component.scss']
 })
 export class JobEditComponent implements OnInit {
-  job: IJob | null = null;
+  job: Job | null = null;
   formData: Omit<IJob, 'id'> | null = null;
 
   @ViewChild(JobFormComponent, { static: true }) form: JobFormComponent | null = null;
@@ -27,7 +27,7 @@ export class JobEditComponent implements OnInit {
       this.job = data['job'];
 
       if (!this.job) return;
-      const { id, ...formFields } = this.job;
+      const { props: { id, ...formFields } } = this.job;
       this.formData = formFields;
     })
 

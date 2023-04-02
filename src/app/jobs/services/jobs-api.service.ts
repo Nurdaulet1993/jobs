@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { IJob } from "../job.model";
+import {map, Observable, tap} from "rxjs";
+import {IJob, Job} from "../job.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,12 @@ export class JobsApiService {
     return this.http.get<IJob[]>(this.endpoint);
   }
 
-  getJobById(id: number): Observable<IJob> {
-   return this.http.get<IJob>(`${this.endpoint}/${id}`);
+  getJobById(id: number): Observable<Job> {
+   return this.http.get<IJob>(`${this.endpoint}/${id}`)
+     .pipe(
+       map((value: IJob) => Job.createJob(value)),
+       tap(console.log)
+     )
   }
 
   updateJob(id: number, props: Omit<IJob, 'id'>): Observable<IJob> {
