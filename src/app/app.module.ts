@@ -10,11 +10,13 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { EffectsModule } from '@ngrx/effects';
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
