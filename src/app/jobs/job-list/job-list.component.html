@@ -1,5 +1,29 @@
 <section class="jobs-list pt-5">
   <div class="container-lg">
-    Hello
+    <table class="table table-bordered table-hover" *ngIf="jobs$ | async as jobs">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Number</th>
+          <th scope="col">Title</th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let job of jobs; let i = index" [routerLink]="[job.id]">
+          <th scope="row">{{ i  + 1 }}</th>
+          <td>{{ job.job_number }}</td>
+          <td>{{ job.job_title  }}</td>
+          <td>{{ job.job_notes }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <a routerLink="/jobs/new" class="btn btn-primary w-100">Create job</a>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 </section>

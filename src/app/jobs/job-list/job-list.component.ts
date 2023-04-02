@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from "@ngrx/store";
-import { State } from "../state";
+import { selectJobs, State } from "../state";
 import { getJobs } from "../state/actions/jobs-actions";
 
 @Component({
@@ -9,6 +9,8 @@ import { getJobs } from "../state/actions/jobs-actions";
   styleUrls: ['./job-list.component.scss']
 })
 export class JobListComponent implements OnInit {
+  jobs$ = this.store.select(selectJobs);
+
   constructor(
     private store: Store<State>
   ) {}

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { JobListComponent } from "./job-list/job-list.component";
 import { JobEditComponent } from "./job-edit/job-edit.component";
 import { JobAddComponent } from "./job-add/job-add.component";
+import { JobResolverService } from "./services/job-resolver.service";
 
 const routes: Routes = [
   {
@@ -10,12 +11,15 @@ const routes: Routes = [
     component: JobListComponent
   },
   {
-    path: ':id',
-    component: JobEditComponent
-  },
-  {
     path: 'new',
     component: JobAddComponent
+  },
+  {
+    path: ':id',
+    component: JobEditComponent,
+    resolve: {
+      job: JobResolverService
+    }
   }
 ]
 

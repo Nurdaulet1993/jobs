@@ -1,5 +1,10 @@
-<section class="jobs-edit">
+<section class="jobs-edit py-5">
   <div class="container-lg">
-    <p>job-edit works!</p>
+    <a routerLink="/jobs" class="btn btn-info mb-3">Back</a>
+    <div class="row">
+      <div class="col-md-6">
+        <app-job-form [job]="formData"></app-job-form>
+      </div>
+    </div>
   </div>
 </section>
