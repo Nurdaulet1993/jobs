@@ -1,17 +1,15 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from "@angular/common/http";
+import { SharedModule } from "./shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
-
-import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { EffectsModule } from '@ngrx/effects';
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +19,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
+    SharedModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
