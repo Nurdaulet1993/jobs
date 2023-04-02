@@ -4,7 +4,8 @@ import { IJob } from "../../job.model";
 export enum JobsActionsType {
   GET_JOBS = '[JOBS] Get jobs',
   UPDATE_JOB = '[JOBS] Update job',
-  CREATE_JOB = '[JOBS] Create a job'
+  CREATE_JOB = '[JOBS] Create a job',
+  DELETE_JOB = '[JOBS] Delete job'
 }
 
 export const getJobs = createAction(
@@ -19,4 +20,9 @@ export const updateJob = createAction(
 export const createJob = createAction(
   JobsActionsType.CREATE_JOB,
   props<{ props: Omit<IJob, 'id'> }>()
+)
+
+export const deleteJob = createAction(
+  JobsActionsType.DELETE_JOB,
+  props<{ id: number }>()
 )

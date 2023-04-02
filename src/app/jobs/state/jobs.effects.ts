@@ -83,6 +83,33 @@ export class JobsEffects {
     })
   ), { dispatch: false })
 
+  deleteJob$ = createEffect(() => this.actions$.pipe(
+    ofType(JobsActions.deleteJob),
+    mergeMap(
+      ({ id }) => this.jobsApiService.removeJob(id)
+        .pipe(
+          map((id) => ({ type: JobsApiActions.JobsApiActionsType.DELETE_JOB_SUCCESS, id })),
+          catchError((error) => {
+            this.toastService.error('Job deletion error!', undefined, {
+              positionClass: 'toast-top-right',
+              easeTime: 500
+            })
+            return EMPTY;
+          })
+        )
+    )
+  ))
+
+  deleteJobSuccess$ = createEffect(() => this.actions$.pipe(
+    ofType(JobsApiActions.JobsApiActionsType.DELETE_JOB_SUCCESS),
+    tap(() => {
+      this.toastService.success('Job creation successfully done!', undefined, {
+        positionClass: 'toast-bottom-left',
+        easeTime: 500
+      })
+    })
+  ), { dispatch: false })
+
   constructor(
     private actions$: Actions,
     private jobsApiService: JobsApiService,

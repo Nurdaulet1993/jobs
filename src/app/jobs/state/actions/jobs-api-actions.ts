@@ -4,7 +4,8 @@ import { IJob } from "../../job.model";
 export enum JobsApiActionsType {
   GET_JOBS_SUCCESS = '[JOBS] Get jobs success',
   UPDATE_JOB_SUCCESS = '[JOBS] Update job success',
-  CREATE_JOB_SUCCESS = '[JOBS] Create a job success'
+  CREATE_JOB_SUCCESS = '[JOBS] Create a job success',
+  DELETE_JOB_SUCCESS = '[JOBS] Delete job success'
 }
 
 export const getJobsSuccess = createAction(
@@ -18,4 +19,9 @@ export const updateJobSuccess = createAction(
 
 export const createJobSuccess = createAction(
   JobsApiActionsType.CREATE_JOB_SUCCESS
+)
+
+export const deleteJobSuccess = createAction(
+  JobsApiActionsType.DELETE_JOB_SUCCESS,
+  props<{ id: number }>()
 )

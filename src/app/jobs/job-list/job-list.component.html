@@ -7,6 +7,7 @@
           <th scope="col">Number</th>
           <th scope="col">Title</th>
           <th scope="col">Notes</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -15,11 +16,14 @@
           <td>{{ job.job_number }}</td>
           <td>{{ job.job_title  }}</td>
           <td>{{ job.job_notes }}</td>
+          <td>
+            <button (click)="onDelete(job.id)" class="btn btn-danger">delete</button>
+          </td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="4">
+          <td colspan="5">
             <a routerLink="/jobs/new" class="btn btn-primary w-100">Create job</a>
           </td>
         </tr>
